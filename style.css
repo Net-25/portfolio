@@ -1,0 +1,464 @@
+
+/* ==========================================================================
+   1. Reset & Global Styles
+   ========================================================================== */
+html, body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Entire webpage styled with a premium Gemini-inspired glow */
+body {
+    font-family: Arial, sans-serif;
+    /* Updated to a dark pink (#880e4f) to dark blue (#0d47a1) gradient */
+    background: linear-gradient(135deg, #880e4f 0%, #4a148c 50%, #0d47a1 100%) no-repeat fixed;
+    color: #f3f4f6; /* Soft, readable white text */
+    text-align: center;
+    padding: 50px 0; /* Adjusted padding to prevent breaking layouts */
+    min-height: 100vh;
+}
+
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    width: 100%;
+    padding: 70px 20px;
+}
+
+/* ==========================================================================
+   2. Typography & Gradient Headings
+   ========================================================================== */
+h1, h2, h3 {
+    font-weight: bold;
+}
+
+/* Gemini Pink-to-Purple Gradient Heading Style */
+.hero h1, .main-heading, .typing {
+    font-size: 50px;
+    background: linear-gradient(135deg, #ff80b5, #9089fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+/* Section titles */
+.about h2, .skills h2, .projects h2, .education h2, .contact h2 {
+    font-size: 40px;
+    color: #b493ff; /* Modern soft neon violet for section titles */
+    margin-bottom: 40px;
+}
+
+/* Card Titles */
+.skill-card h3, .project-card h3, .education-card h3 {
+    color: #ff80b5; /* Soft glowing pink for accent hierarchy */
+    margin-bottom: 15px;
+}
+
+p {
+    font-size: 18px;
+    max-width: 700px;
+    margin: 0 auto 30px;
+    line-height: 1.7;
+    color: #9ca3af; /* Muted silver-grey text for optimal readability */
+}
+
+/* ==========================================================================
+   3. Navigation Bar (Frosted Glass Effect)
+   ========================================================================== */
+nav {
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: rgba(12, 7, 20, 0.6); /* Semi-transparent dark overlay */
+    backdrop-filter: blur(12px);     /* Glassmorphism blur */
+    -webkit-backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 30px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #ff80b5, #9089fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-size: 18px;
+    font-weight: 500;
+    transition: .3s;
+}
+
+nav ul li a:hover {
+    color: #ff80b5;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 32px;
+    cursor: pointer;
+    color: #ff80b5;
+}
+
+/* ==========================================================================
+   4. Hero & Profile Component
+   ========================================================================== */
+.hero {
+    padding: 100px 20px;
+}
+
+.profile {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 30px;
+    border: 4px solid rgba(255, 128, 181, 0.4); /* Glowing translucent borders */
+    box-shadow: 0 0 40px rgba(144, 137, 252, 0.25);
+}
+
+/* ==========================================================================
+   5. Content Cards & Layouts (Translucent Obsidian Cards)
+   ========================================================================== */
+.about, .skill-card, .project-card, .education-card {
+    background: rgba(255, 255, 255, 0.03); /* Slight white tint for visibility */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Soft border highlight */
+    backdrop-filter: blur(8px);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    transition: .3s ease;
+    color: #e5e7eb;
+}
+
+/* Specific card layouts */
+.about {
+    max-width: 900px;
+    margin: 100px auto;
+    padding: 40px;
+}
+
+.skills, .projects, .education, .contact {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.skill-container, .project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.skill-card {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 180px;
+}
+
+.project-card {
+    padding: 30px;
+}
+
+.education-card {
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 30px;
+}
+
+/* Card Hover Dynamics */
+.skill-card:hover, .project-card:hover, .education-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 128, 181, 0.3);
+    box-shadow: 0 20px 40px rgba(144, 137, 252, 0.15);
+}
+
+/* ==========================================================================
+   6. Buttons & Interactive Links
+   ========================================================================== */
+button, .project-btn, .contact-links a {
+    display: inline-block;
+    background: linear-gradient(135deg, #2563eb, #9089fc); /* Sleek modern blue-purple button */
+    color: white;
+    border: none;
+    text-decoration: none;
+    padding: 14px 35px;
+    font-size: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(144, 137, 252, 0.2);
+    white-space: nowrap;
+}
+
+.project-btn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+}
+
+button:hover, .project-btn:hover, .contact-links a:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 128, 181, 0.4);
+    background: linear-gradient(135deg, #ff80b5, #9089fc); /* Flips to Gemini colors on hover */
+}
+
+/* Contact layout alignment */
+.contact-links {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+footer {
+    background: rgba(12, 7, 20, 0.8);
+    color: #9ca3af;
+    text-align: center;
+    padding: 30px;
+    margin-top: 80px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ==========================================================================
+   7. Animations & General Utility
+   ========================================================================== */
+.typing {
+    border-right: 3px solid #ff80b5;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(80px);
+    transition: all .8s ease;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+/* ==========================================================================
+   8. Media Queries (Responsive Design Layer)
+   ========================================================================== */
+
+/* Large Desktop / Ultrawide */
+@media (min-width: 1200px) {
+    .hero, .skill-container, .project-container {
+        max-width: 1200px;
+        margin: auto;
+    }
+    .about {
+        max-width: 1000px;
+    }
+}
+
+/* Tablets */
+@media (max-width: 1024px) {
+    nav {
+        padding: 18px 30px;
+    }
+    .hero h1 {
+        font-size: 42px;
+    }
+    .about {
+        margin: 60px 20px;
+    }
+    .skill-container, .project-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Mobile Devices (Merged and Consolidated) */
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+    }
+    nav {
+        padding: 15px 20px;
+        flex-wrap: wrap;
+    }
+    .logo {
+        font-size: 28px;
+    }
+    .menu-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 18px;
+        margin-top: 20px;
+        background: rgba(255, 255, 255, .08);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-radius: 15px;
+        padding: 20px;
+    }
+    nav ul.active {
+        display: flex;
+    }
+    nav ul li a {
+        font-size: 18px;
+    }
+    .hero {
+        padding: 60px 20px;
+    }
+    .hero h1 {
+        font-size: 34px;
+    }
+    .hero h2 {
+        font-size: 24px;
+    }
+    .hero p {
+        width: 100%;
+        font-size: 16px;
+    }
+    .profile {
+        width: 170px;
+        height: 170px;
+    }
+    .about {
+        margin: 40px 15px;
+        padding: 25px;
+    }
+    .about h2, .skills h2, .projects h2, .education h2, .contact h2 {
+        font-size: 32px;
+    }
+    .skill-container, .project-container {
+        grid-template-columns: 1fr;
+    }
+    .skill-card, .project-card {
+        width: 100%;
+    }
+    .education-card {
+        margin: 20px 10px;
+    }
+    button, .project-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    .contact p {
+        font-size: 16px;
+        word-break: break-word;
+    }
+    .social-links {
+        flex-direction: column;
+        gap: 15px;
+    }
+    footer {
+        padding: 20px;
+        font-size: 14px;
+    }
+}
+
+/* Small Smart Phones */
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+    .hero h2 {
+        font-size: 20px;
+    }
+    .logo {
+        font-size: 24px;
+    }
+    .profile {
+        width: 140px;
+        height: 140px;
+    }
+    .about h2, .skills h2, .projects h2, .education h2, .contact h2 {
+        font-size: 28px;
+    }
+    p {
+        font-size: 15px;
+    }
+    button {
+        font-size: 16px;
+        padding: 12px 25px;
+    }
+    .skill-card, .project-card, .education-card {
+        padding: 20px;
+    }
+}
+.cursor{
+    width:25px;
+    height:25px;
+    border:2px solid #ff80b5;
+    border-radius:50%;
+    position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    transition:.1s;
+    z-index:9999;
+    box-shadow:0 0 20px #ff80b5;
+}
+.cursor.active{
+
+width:50px;
+
+height:50px;
+
+background:rgba(255,128,181,.2);
+
+}
+.mouse-glow{
+
+position:fixed;
+
+width:350px;
+
+height:350px;
+
+background:radial-gradient(circle,#ff80b540,transparent);
+
+border-radius:50%;
+
+pointer-events:none;
+
+transform:translate(-50%,-50%);
+
+filter:blur(50px);
+
+z-index:-1;
+
+}
